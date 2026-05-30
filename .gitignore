@@ -1,0 +1,20 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.uv-cache/
+
+# Local machine clutter
+.DS_Store
+
+# Keep the lockfile committed so everyone benchmarks the same JAX stack.
+!uv.lock

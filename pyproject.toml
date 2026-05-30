@@ -1,0 +1,9 @@
+[project]
+name = "jax-whose-laptop-is-better"
+version = "0.1.0"
+description = "A tiny JAX benchmark for highly serious laptop bragging rights."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jax>=0.6.0",
+]
