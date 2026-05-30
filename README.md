@@ -16,7 +16,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 Official instructions live at [docs.astral.sh/uv](https://docs.astral.sh/uv/getting-started/installation/), in case your terminal wants to be dramatic.
 
-The project uses only `jax` as a dependency. The `uv.lock` file is committed so everyone brings the same tiny suitcase to the benchmark fight.
+The default CPU duel uses only `jax`. The optional Apple Silicon GPU lane adds `jax-mps`, because tiny suitcase, slightly suspicious engine upgrade. The `uv.lock` file is committed so everyone boards with the same dependency luggage.
 
 ## Run The Duel
 
@@ -25,6 +25,20 @@ uv run --locked python benchmark.py
 ```
 
 The script prints your JAX backend, run times, checksum, and one glorious benchmark score in GFLOP/s. Bigger number wins. Smaller number buys airport snacks.
+
+## Apple Silicon GPU Duel
+
+For the experimental MPS path, use `jax-mps`. It currently wants macOS on Apple Silicon, Python 3.13, and the `mps` JAX platform:
+
+```sh
+uv run --locked --python 3.13 --extra mps python benchmark.py --backend mps
+```
+
+To force the CPU lane for comparison:
+
+```sh
+uv run --locked python benchmark.py --backend cpu
+```
 
 Optional knobs, for people who believe a boarding gate can also be a lab:
 

@@ -24,6 +24,18 @@ wheels = [
 ]
 
 [[package]]
+name = "jax-mps"
+version = "0.10.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jax", marker = "python_full_version >= '3.13'" },
+    { name = "jaxlib", marker = "python_full_version >= '3.13'" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c2/df/ae7e8d15a46712e011057e79ffe7ab8128495171b95314acb36162e0cb20/jax_mps-0.10.1-cp313-cp313-macosx_14_0_arm64.whl", hash = "sha256:fb7854a18a9d52949674d6633c940ad87e8c531d4dd98446f2044b564cd753fa", size = 45218131, upload-time = "2026-05-08T03:34:52.321Z" },
+]
+
+[[package]]
 name = "jax-whose-laptop-is-better"
 version = "0.1.0"
 source = { virtual = "." }
@@ -31,8 +43,17 @@ dependencies = [
     { name = "jax" },
 ]
 
+[package.optional-dependencies]
+mps = [
+    { name = "jax-mps", marker = "python_full_version >= '3.13' and platform_machine == 'arm64' and sys_platform == 'darwin'" },
+]
+
 [package.metadata]
-requires-dist = [{ name = "jax", specifier = ">=0.6.0" }]
+requires-dist = [
+    { name = "jax", specifier = ">=0.10,<0.11" },
+    { name = "jax-mps", marker = "python_full_version >= '3.13' and platform_machine == 'arm64' and sys_platform == 'darwin' and extra == 'mps'", specifier = "==0.10.1" },
+]
+provides-extras = ["mps"]
 
 [[package]]
 name = "jaxlib"
